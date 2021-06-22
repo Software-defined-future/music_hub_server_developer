@@ -27,7 +27,7 @@ public class SongListController {
     public class MyPicConfig implements WebMvcConfigurer {
         @Override
         public void addResourceHandlers(ResourceHandlerRegistry registry) {
-            registry.addResourceHandler("/img/songListPic/**").addResourceLocations("file:H:/上课/大三下学期/高级软件工程综合训练/music-website-master/music-server/img/songListPic/");
+            registry.addResourceHandler("/img/songListPic/**").addResourceLocations("file:H:/上课/大三下学期/高级软件工程综合训练/music-website-master/img/songListPic/");
         }
     }
 
