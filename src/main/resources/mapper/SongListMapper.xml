@@ -10,6 +10,7 @@
     <result column="title" property="title" jdbcType="VARCHAR" />
     <result column="pic" property="pic" jdbcType="VARCHAR" />
     <result column="style" property="style" jdbcType="VARCHAR" />
+    <result column="score" property="score" jdbcType="INTEGER" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.example.demo.domain.SongList" extends="BaseResultMap" >
     <!--
@@ -48,6 +49,11 @@
     select *
     from song_list
   </select>
+  <select id="containerSongList" resultMap="ResultMapWithBLOBs">
+    select s.*
+from song_list s, list_song l
+where  s.id=l.song_list_id and l.song_id = #{0}
+  </select>
   <select id="likeTitle" resultMap="ResultMapWithBLOBs">
     select *
     from song_list
@@ -62,6 +68,11 @@
     select *
     from song_list
     where title = #{title,jdbcType=VARCHAR}
+  </select>
+  <select id="getUpdateId" resultType="java.lang.Long">
+    select id
+from song_list
+where `update` = 0;
   </select>
   <delete id="deleteSongList" parameterType="java.lang.Integer" >
     <!--
@@ -175,5 +186,17 @@
       pic = #{pic,jdbcType=VARCHAR},
     style = #{style,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateSongListState">
+    update song_list
+    <set>
+    `update` = 0
+    </set>
+    where id = #{0}
+  </update>
+  <update id="updateSongListScore">
+    update song_list
+    set score = #{1}
+    where id = #{0}
   </update>
 </mapper>

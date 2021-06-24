@@ -5,6 +5,7 @@ import com.example.demo.domain.SongList;
 import com.example.demo.service.impl.SongListServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -167,6 +168,15 @@ public class SongListController {
             return jsonObject;
         }
     }
+
+    /**
+     * 返回包含某歌曲的歌单
+     */
+    @GetMapping(value = "/songList/container/songList")
+    public Object containerSongList(@RequestParam("song")Integer song){
+        return songListService.containerSongList(song);
+    }
+
 }
 
 

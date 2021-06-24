@@ -39,4 +39,6 @@ public interface SongMapper {
 
     List<Song> songOfName(String name);
 
+//    List<Song> recommendSongs(String song);
+
 }

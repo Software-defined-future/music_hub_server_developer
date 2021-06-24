@@ -4,6 +4,7 @@ import com.example.demo.dao.SongListMapper;
 import com.example.demo.domain.SongList;
 import com.example.demo.service.SongListService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -49,6 +50,27 @@ public class SongListServiceImpl implements SongListService {
     }
 
     @Override
+    public List<SongList> containerSongList(Integer song) {
+        return songListMapper.containerSongList(song);
+    }
+
+    @Override
+    public List<Long> getUpdateId() {
+        return songListMapper.getUpdateId();
+    }
+
+    @Async
+    @Override
+    public boolean updateSongListState(Integer id) {
+        return songListMapper.updateSongListState(id)>0? true:false;
+    }
+
+    @Override
+    public boolean updateSongListScore(Long id,Integer score) {
+        return songListMapper.updateSongListScore(id,score)>0?true:false;
+    }
+
+    @Override
     public boolean addSongList(SongList songList)
     {
         return songListMapper.insertSelective(songList) > 0?true:false;
@@ -59,4 +81,5 @@ public class SongListServiceImpl implements SongListService {
 
         return songListMapper.updateSongListImg(songList) >0 ?true:false;
     }
+
 }

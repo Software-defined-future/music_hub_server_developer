@@ -10,9 +10,12 @@ public class SongList {
 
     private String pic;
 
+    private Integer score;
+
     private String style;
 
     private String introduction;
+
 
     public Integer getId() {
         return id;
@@ -52,6 +55,14 @@ public class SongList {
 
     public void setIntroduction(String introduction) {
         this.introduction = introduction == null ? null : introduction.trim();
+    }
+
+    public Integer getScore() {
+        return score;
+    }
+
+    public void setScore(Integer score) {
+        this.score = score;
     }
 
     @Override

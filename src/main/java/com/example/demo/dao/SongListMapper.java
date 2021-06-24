@@ -1,5 +1,6 @@
 package com.example.demo.dao;
 
+
 import com.example.demo.domain.SongList;
 import org.springframework.stereotype.Repository;
 
@@ -28,6 +29,9 @@ public interface SongListMapper {
 
     int deleteSongList(Integer id);
 
+    int updateSongListState(Integer id);
+    int updateSongListScore(Long id,Integer score);
+
     List<SongList> allSongList();
 
     List<SongList> likeTitle(String title);
@@ -35,4 +39,8 @@ public interface SongListMapper {
     List<SongList> likeStyle(String style);
 
     List<SongList> songListOfTitle(String title);
+
+    List<SongList> containerSongList(Integer song);
+    List<Long> getUpdateId();
+
 }

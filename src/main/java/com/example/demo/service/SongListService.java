@@ -22,4 +22,9 @@ public interface SongListService {
 
     List<SongList> songListOfTitle(String title);
 
+    List<SongList> containerSongList(Integer song);
+    List<Long> getUpdateId();
+    boolean updateSongListState(Integer id);
+    boolean updateSongListScore(Long id,Integer score);
+
 }

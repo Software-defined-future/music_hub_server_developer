@@ -18,9 +18,9 @@ FROM `rank`
 WHERE songListId = #{0}
   </select>
   <select id="selectRankNum" resultType="java.lang.Integer">
-  SELECT COALESCE(count(id),1) as num
+  SELECT count(id)
   from `rank`
-  where songListId = #{0};
+  where songListId = #{0}
   </select>
   <insert id="insert" parameterType="com.example.demo.domain.Rank" >
     <!--

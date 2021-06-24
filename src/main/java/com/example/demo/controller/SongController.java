@@ -264,4 +264,12 @@ public class SongController {
             return jsonObject;
         }
     }
+    /**
+     * 获取相似歌曲
+     */
+    @GetMapping(value = "/song/similar/recommend")
+    public Object similarRecommend(@RequestParam("song")Integer song){
+
+        return songService.recommendSongs(song);
+    }
 }
