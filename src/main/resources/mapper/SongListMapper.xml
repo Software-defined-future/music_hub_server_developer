@@ -50,9 +50,9 @@
     from song_list
   </select>
   <select id="containerSongList" resultMap="ResultMapWithBLOBs">
-    select s.*
+    select distinct s.*
 from song_list s, list_song l
-where  s.id=l.song_list_id and l.song_id = #{0}
+where l.song_id = #{0} and s.id=l.song_list_id
   </select>
   <select id="likeTitle" resultMap="ResultMapWithBLOBs">
     select *
