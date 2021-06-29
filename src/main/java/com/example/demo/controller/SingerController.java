@@ -20,6 +20,7 @@ import java.util.Date;
 
 @RestController
 @Controller
+@CrossOrigin
 public class SingerController {
 
     @Autowired
@@ -29,7 +30,7 @@ public class SingerController {
     public class MyPicConfig implements WebMvcConfigurer {
         @Override
         public void addResourceHandlers(ResourceHandlerRegistry registry) {
-            registry.addResourceHandler("/img/singerPic/**").addResourceLocations("file:H:/上课/大三下学期/高级软件工程综合训练/music-website-master/img/singerPic/");
+            registry.addResourceHandler("/img/singerPic/**").addResourceLocations("file:H:/上课/大三下学期/高级软件工程综合训练/music-website-master/music_hub_server_developer/img/singerPic/");
         }
     }
 

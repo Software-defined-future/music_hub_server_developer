@@ -3,10 +3,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.1.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-parent</artifactId>
+         <version>2.2.2.RELEASE</version>
+            <relativePath/> <!-- lookup parent from repository -->
+
     </parent>
     <groupId>com.example</groupId>
     <artifactId>demo</artifactId>
@@ -19,6 +20,13 @@
     </properties>
 
     <dependencies>
+    <!-- https://mvnrepository.com/artifact/org/jaudiotagger -->
+<dependency>
+    <groupId>org</groupId>
+    <artifactId>jaudiotagger</artifactId>
+    <version>2.0.3</version>
+</dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>

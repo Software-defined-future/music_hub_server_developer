@@ -5,16 +5,14 @@ import com.example.demo.domain.Comment;
 import com.example.demo.service.impl.CommentServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 
 @RestController
 @Controller
+@CrossOrigin
 public class CommentController {
     @Autowired
     private CommentServiceImpl commentService;

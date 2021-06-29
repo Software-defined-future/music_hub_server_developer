@@ -74,6 +74,24 @@ UNLOCK TABLES;
 --
 -- Table structure for table `comment`
 --
+DROP TABLE IF EXISTS `cloud_song`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cloud_song` (
+  `id` int(10)  NOT NULL AUTO_INCREMENT,
+  `user_id` int(10)  NOT NULL,
+   `name` varchar(45) NOT NULL,
+  `intro` varchar(255) DEFAULT NULL,
+  `upload_time` datetime NOT NULL COMMENT '上传时间',
+ `format` varchar(45) NOT NULL,
+  `size` bigint(20) NOT NULL,
+   `title` varchar(45) NOT NULL,
+  `pic` varchar(255) DEFAULT NULL,
+  `lyric` text,
+  `url` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=utf8;
+
 
 DROP TABLE IF EXISTS `comment`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;

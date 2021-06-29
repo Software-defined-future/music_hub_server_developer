@@ -23,6 +23,7 @@ import java.util.Date;
 
 @RestController
 @Controller
+@CrossOrigin
 public class SongController {
 
     @Autowired
@@ -42,8 +43,11 @@ public class SongController {
     public class MyPicConfig implements WebMvcConfigurer {
         @Override
         public void addResourceHandlers(ResourceHandlerRegistry registry) {
-            registry.addResourceHandler("/img/songPic/**").addResourceLocations("file:H:/上课/大三下学期/高级软件工程综合训练/music-website-master/img/songPic/");
-            registry.addResourceHandler("/song/**").addResourceLocations("file:H:/上课/大三下学期/高级软件工程综合训练/music-website-master/song/");
+            registry.addResourceHandler("/img/songPic/**").addResourceLocations("file:H:/上课/大三下学期/高级软件工程综合训练/music-website-master/music_hub_server_developer/img/songPic/");
+            registry.addResourceHandler("/song/**").addResourceLocations("file:H:/上课/大三下学期/高级软件工程综合训练/music-website-master/music_hub_server_developer/song/");
+            registry.addResourceHandler("/cloudMusic/**").addResourceLocations("file:H:/上课/大三下学期/高级软件工程综合训练/music-website-master/music_hub_server_developer/cloudMusic/");
+            registry.addResourceHandler("/cloudPic/**").addResourceLocations("file:H:/上课/大三下学期/高级软件工程综合训练/music-website-master/music_hub_server_developer/cloudPic/");
+
         }
     }
 
@@ -269,7 +273,7 @@ public class SongController {
      */
     @GetMapping(value = "/song/similar/recommend")
     public Object similarRecommend(@RequestParam("song")Integer song){
-
-        return songService.recommendSongs(song);
+       // songService.recommendSongs(song)
+        return "123";
     }
 }

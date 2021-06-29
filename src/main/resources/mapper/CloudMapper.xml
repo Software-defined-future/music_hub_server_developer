@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.dao.CloudMapper">
+    <resultMap id="CloudSongMapper" type="com.example.demo.domain.Cloud">
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="user_id" property="userId" jdbcType="INTEGER" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="intro" property="intro" jdbcType="VARCHAR" />
+        <result column="upload_time" property="upload_time" jdbcType="TIMESTAMP" />
+        <result column="title" property="title" jdbcType="VARCHAR" />
+        <result column="pic" property="pic" jdbcType="VARCHAR" />
+        <result column="url" property="url" jdbcType="VARCHAR" />
+        <result column="size" property="size"  />
+        <result column="lyric" property="lyric" jdbcType="LONGVARCHAR" />
+        <result column="format" property="format" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <insert id="insertCloudSong" parameterType="com.example.demo.domain.Cloud">
+        INSERT INTO cloud_song(user_id, name, intro, upload_time, format, size, title, pic, lyric, url) VALUES (#{userId},#{name},#{intro},#{upload_time},#{format},#{size},#{title},'/cloudPic/default.jpg',#{lyric},#{url});
+    </insert>
+    <select id="allSongs" resultMap="CloudSongMapper">
+        select *
+from cloud_song
+where user_id = #{0}
+    </select>
+    <update id="updateSong" parameterType="com.example.demo.domain.Cloud">
+update cloud_song
+        <set >
+            <if test="name != null" >
+                `name` = #{name},
+            </if>
+            <if test="title != null" >
+                title = #{title},
+            </if>
+            <if test="intro != null" >
+                intro = #{intro},
+            </if>
+            <if test="pic != null" >
+                pic = #{pic},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+    <select id="getSize" resultType="java.lang.Long">
+        select SUM(size)
+from cloud_song
+where user_id = #{0};
+
+    </select>
+</mapper>

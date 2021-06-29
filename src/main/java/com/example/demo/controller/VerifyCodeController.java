@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.example.demo.util.VerificationCodeUtil;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.awt.image.BufferedImage;
 
 @RestController
+@CrossOrigin
 public class VerifyCodeController {
     @ResponseBody
     @GetMapping(value = "/Captcha.jpg")

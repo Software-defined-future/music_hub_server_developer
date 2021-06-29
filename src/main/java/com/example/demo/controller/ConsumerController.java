@@ -22,6 +22,7 @@ import java.util.Date;
 
 @RestController
 @Controller
+@CrossOrigin
 public class ConsumerController {
 
     @Autowired
@@ -31,8 +32,8 @@ public class ConsumerController {
     public class MyPicConfig implements WebMvcConfigurer {
         @Override
         public void addResourceHandlers(ResourceHandlerRegistry registry) {
-            registry.addResourceHandler("/avatorImages/**").addResourceLocations("file:H:/上课/大三下学期/高级软件工程综合训练/music-website-master/avatorImages/");
-            registry.addResourceHandler("/a-soul/**").addResourceLocations("file:H:/上课/大三下学期/高级软件工程综合训练/music-website-master/img/A-SOUL/");
+            registry.addResourceHandler("/avatorImages/**").addResourceLocations("file:H:/上课/大三下学期/高级软件工程综合训练/music-website-master/music_hub_server_developer/avatorImages/");
+            registry.addResourceHandler("/a-soul/**").addResourceLocations("file:H:/上课/大三下学期/高级软件工程综合训练/music-website-master/music_hub_server_developer/img/A-SOUL/");
         }
     }
 
