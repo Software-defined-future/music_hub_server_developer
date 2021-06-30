@@ -103,8 +103,8 @@ public class CloudController {
         return cloudService.allSongs(id);
     }
     @PostMapping(value = "/cloud/updateInfo")
-    public Object cloudUpdateInfo(HttpServletRequest req,@RequestParam("img")MultipartFile img)  {
-System.out.println("test");
+    public Object cloudUpdateInfo(HttpServletRequest req,MultipartFile img)  {
+//System.out.println("test");
         JSONObject jsonObject = new JSONObject();
         String userId = req.getParameter("userId").trim();
         String id = req.getParameter("id").trim();

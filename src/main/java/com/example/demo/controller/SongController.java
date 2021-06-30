@@ -7,10 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.MultipartConfigFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.unit.DataSize;
 import org.springframework.util.unit.DataUnit;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -19,7 +23,10 @@ import javax.servlet.MultipartConfigElement;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
 @RestController
 @Controller
@@ -272,8 +279,22 @@ public class SongController {
      * 获取相似歌曲
      */
     @GetMapping(value = "/song/similar/recommend")
-    public Object similarRecommend(@RequestParam("song")Integer song){
+    public Object similarRecommend(@RequestParam("song")Long song){
        // songService.recommendSongs(song)
-        return "123";
+        List<Long> arrays = new LinkedList<>();
+//        arrays.add(400876320l);
+        arrays.add(song);
+        String url = "http://182.92.163.69:13889/api/recommend_musics_by_musics ";
+        RestTemplate template = new RestTemplate();
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("musics_id",arrays);
+        jsonObject.put("max_n",5);
+        JSONObject res = template.postForEntity(url,jsonObject,JSONObject.class).getBody();
+//        System.out.println(res.get("result"));
+        List<Long> list = res.getObject("result",List.class);
+
+        return songService.recommendSongs(list);
     }
 }

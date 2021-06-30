@@ -26,5 +26,5 @@ public interface SongService {
 
     List<Song> songOfName(String name);
 
-    List<Song> recommendSongs(Integer song);
+    List<Song> recommendSongs(List<Long> list);
 }

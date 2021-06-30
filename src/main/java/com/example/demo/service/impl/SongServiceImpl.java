@@ -6,6 +6,7 @@ import com.example.demo.service.SongService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.LinkedList;
 import java.util.List;
 
 @Service
@@ -78,8 +79,15 @@ public class SongServiceImpl implements SongService {
     }
 
     @Override
-    public List<Song> recommendSongs(Integer song) {
-//      return   songMapper.recommendSongs(song);
-        return null;
+    public List<Song> recommendSongs(List<Long> list) {
+        List<Song> songs = new LinkedList<>();
+        list.forEach(  item ->{
+           Song song = songMapper.recommendSongs(item);
+           if(song!=null){
+               songs.add(song);
+           }
+        });
+      return   songs;
+
     }
 }
