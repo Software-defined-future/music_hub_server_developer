@@ -85,8 +85,11 @@ public class ConsumerController {
         consumer.setAvator(avator);
         consumer.setCreateTime(new Date());
         consumer.setUpdateTime(new Date());
+        try{
+
 
         boolean res = consumerService.addUser(consumer);
+
         if (res) {
             jsonObject.put("code", 1);
             jsonObject.put("msg", "注册成功");
@@ -94,6 +97,11 @@ public class ConsumerController {
         } else {
             jsonObject.put("code", 0);
             jsonObject.put("msg", "注册失败");
+            return jsonObject;
+        }
+        } catch (Exception e){
+            jsonObject.put("code", 0);
+            jsonObject.put("msg", "用户名已存在");
             return jsonObject;
         }
     }
